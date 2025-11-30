@@ -1,4 +1,3 @@
-
 import json
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -7,6 +6,10 @@ from utils import download_file, process_document
 from extractor import analyze_page
 
 app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"status": "FastAPI running successfully!", "message": "Webhook Ready 🚀"}
 
 class ExtractionRequest(BaseModel):
     document: str  # URL
